@@ -18,7 +18,8 @@ doWork(work);
 
 
 
-// Revealing Module Pattern
+// Revealing Module Pattern, a variable like _workCount is only created once and stored in memory
+// it can be accessed by the inner functions job01 and job02 even after the outer function has executed
 
 var createWorker = function(){
 	
@@ -58,7 +59,7 @@ var ajaxFactory = (function(){
 	
 	var ajaxCall = function(){
 		_ajaxCallCount += 1;
-		console.log("Doing Ajax Call " + _ajaxCallCount);
+		console.log("Doing Ajax Call " + _ajaxCallCount + " ");
 	};
 	
 	
