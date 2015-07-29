@@ -1,5 +1,8 @@
 // Basic JavaScript Patterns
 
+
+// Sending a function to a function to execute
+
 var work = function(){
 	console.log('Working hard!');
 };
@@ -14,14 +17,20 @@ doWork(work);
 
 
 
+// Revealing Module Pattern, crude
+
 var createWorker = function(){
 	
+	var _workCount = 0;
+	
 	var job01 = function(){
-		console.log("Doing job01");
+		_workCount += 1;
+		console.log("Doing job01 " + _workCount);
 	};
 	
 	var job02 = function(){
-		console.log("Doing job02");
+		_workCount += 1;
+		console.log("Doing job02 " + _workCount);
 	};
 	
 	return {
@@ -33,3 +42,4 @@ var createWorker = function(){
 var worker = createWorker();
 worker.job01();
 worker.job02();
+worker.job01();
