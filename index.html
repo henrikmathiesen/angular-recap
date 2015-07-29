@@ -8,7 +8,7 @@
 		<meta name="description" content="Angular Recap">
 		<link rel="stylesheet" href="./css/base.css">
 	</head>
-	<body ng-app="" ng-cloak="">
+	<body ng-app="angularRecap" ng-cloak="">
 		<h1>Angular Recap</h1>
 		<h2>A simple test that Angular is working</h2>
 		<div>{{ 1 + 1 }}</div>
@@ -16,10 +16,19 @@
 		<div>
 			<input type="text" ng-model="name" /> {{ name }}
 		</div>
+		<br />
+		<div ng-controller="mainController">
+			{{ message }}
+		</div>
+		<div ng-controller="mainControllerToo">
+			{{ message }}
+		</div>
 		
 		
 		
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
 		<script src="./js/jspatterns.js"></script>
+		<script src="./js/modules/app.js"></script>
+		<script src="./js/controllers/mainController.js"></script>
 	</body>
 </html>
