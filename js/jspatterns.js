@@ -90,13 +90,13 @@ var ajaxFactory = (function () {
 
 var gitHubAjaxService = (function () {
 
-	setTimeout(function(){
+	//setTimeout(function(){
 		$.ajax({ type: 'GET', url: 'https://api.github.com/users/octocat' })
 			.then(function(response){
 				$('.jq-promise-test').on('click', function () {
 					console.log(response);
 				});
 			});
-	}, 5000);
+	//}, 5000);
 	
 })();

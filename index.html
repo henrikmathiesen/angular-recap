@@ -21,7 +21,25 @@
 			{{ message }}
 		</div>
 		<div ng-controller="mainControllerToo">
-			{{ message }}
+			<h3>Hard coded model data</h3>
+			<div>{{ message }}</div>
+			<br /><br />
+			<div>
+				<div>First name: {{ person.firstName }}</div>
+				<div>Last name: {{ person.lastName }}</div>
+				<div>
+					<img ng-src="{{ person.image }}" alt="{{ person.firstName + ' ' + person.lastName }}" />
+				</div>
+			</div>
+			<br /><br />
+			<h3>Data from Ajax Call</h3>
+			<div class="text-error" ng-show="error">{{ error }}</div>
+			<div>
+				<div>Name: {{ user.name }}</div>
+				<div>
+					<img ng-src="{{ user.avatar_url }}" alt="{{ user.name }}" />
+				</div>
+			</div>
 		</div>
 		
 		<div>
