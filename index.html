@@ -32,22 +32,54 @@
 			<br />
 			<br />
 			<h3>Data from Ajax Call</h3>
-			<form name="search-user" ng-submit="searchUser()">
+			<form name="searchUserForm" ng-submit="searchUser()">
 				<div>
-					<input type="search" placeholder="Username to find" ng-model="query">
+					<input type="search" ng-required="true" placeholder="Username to find" ng-model="query">
 				</div>
-				<div><br/></div>
+				<div>
+					<br/>
+				</div>
 				<div>
 					<input type="submit" value="Search">
 				</div>
 			</form>
-			<div><br/><br/><br/></div>
-			<div class="text-error" ng-show="error">{{ error }}</div>
 			<div>
-				<div>Name: {{ user.name }}</div>
+				<br/>
+				<br/>
+				<br/>
+			</div>
+			<div class="text-error" ng-show="error">{{ error }}</div>
+			<div ng-show="user">
 				<div>
-					<img ng-src="{{ user.avatar_url }}" alt="{{ user.name }}" />
+					<div>Name: {{ user.name }}</div>
+					<div>
+						<img ng-src="{{ user.avatar_url }}" alt="{{ user.name }}" />
+					</div>
 				</div>
+				<h4>Repos</h4>
+				<div>Sort</div>
+				<div>
+					<select ng-model="userReposSortOrder">
+						<option value="+name">Name</option>
+						<option value="-stargazers_count">Stars</option>
+					</select>
+				</div>
+				<table>
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Primary Language</th>
+							<th>Stars</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="repo in userRepos | orderBy:userReposSortOrder">
+							<td>{{ repo.name }}</td>
+							<td>{{ repo.language }}</td>
+							<td>{{ repo.stargazers_count | number }}</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 		<div>

@@ -16,27 +16,39 @@ angular.module('angularRecap').controller('mainController', ['$scope', function(
 			lastName: 'Doe',
 			image: 'http://lorempixel.com/output/cats-q-c-640-480-1.jpg'
 		};
-		$scope.query = "";
-		$scope.user = {};
+		$scope.query = '';
+		$scope.user = null;
+		$scope.userRepos = null;
+		$scope.userReposSortOrder = '-stargazers_count';
 		$scope.error = '';
 		
 		
-		var makeAjaxCall = function(){
+		var makeUserRepoAjaxCall = function(){
+			$http.get($scope.user.repos_url)
+				.then(function(response){
+					console.log(response.data);
+					$scope.userRepos = response.data;
+				});
+		};
+		
+		var makeUserAjaxCall = function(){
 			$http.get('https://api.github.com/users/' + ($scope.query || 'octocat'))
 					.then(function(response){
 						console.log(response.data);
 						$scope.user = response.data;
+						$scope.error = '';
+						makeUserRepoAjaxCall();
 					}, function(response){
 						$scope.error = "Error fetching the user"
 					});
 		};
 		
 		$scope.searchUser = function(){
-			makeAjaxCall();	
+			makeUserAjaxCall();	
 		};
 		
 		
-		makeAjaxCall();
+		//makeUserAjaxCall();
 	};
 	
 	angular.module('angularRecap').controller('mainControllerToo', mainControllerToo);

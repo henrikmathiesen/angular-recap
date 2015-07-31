@@ -86,17 +86,18 @@ var ajaxFactory = (function () {
 // I want to test something with Ajax in relation to this
 // We want to bind click event after response from ajax, so ajax request is only run once
 // setTimeout is there for debug purpose
+// We comment out the Ajax Call because there is a 60 call / hour cap on GitHub
 // jQuery is included in the project (should come before Angular)
 
 var gitHubAjaxService = (function () {
 
 	//setTimeout(function(){
-		$.ajax({ type: 'GET', url: 'https://api.github.com/users/octocat' })
-			.then(function(response){
-				$('.jq-promise-test').on('click', function () {
-					console.log(response);
-				});
-			});
+		// $.ajax({ type: 'GET', url: 'https://api.github.com/users/octocat' })
+		// 	.then(function(response){
+		// 		$('.jq-promise-test').on('click', function () {
+		// 			console.log(response);
+		// 		});
+		// 	});
 	//}, 5000);
 	
 })();
