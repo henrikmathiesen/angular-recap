@@ -33,6 +33,7 @@
 			<br />
 			<h3>Data from Ajax Call</h3>
 			<form name="searchUserForm" ng-submit="searchUser()">
+				<div ng-show="countdown > 0" ng-class="{'text-warning': countdown < 3}">{{ countdown }}</div>
 				<div>
 					<input type="search" ng-required="true" placeholder="Username to find" ng-model="query">
 				</div>

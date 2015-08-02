@@ -9,14 +9,17 @@ angular.module('angularRecap').controller('mainController', ['$scope', function(
 
 (function(){
 	
-	var mainControllerToo = function($scope, $http){
+	var mainControllerToo = function($scope, $http, $interval){
+		var interval = null;
+		
 		$scope.message = "This is also a min safed controller";
 		$scope.person = {
 			firstName: 'John',
 			lastName: 'Doe',
 			image: 'http://lorempixel.com/output/cats-q-c-640-480-1.jpg'
 		};
-		$scope.query = '';
+		$scope.query = 'octocat';
+		$scope.countdown = 5;
 		$scope.user = null;
 		$scope.userRepos = null;
 		$scope.userReposSortOrder = '-stargazers_count';
@@ -32,7 +35,7 @@ angular.module('angularRecap').controller('mainController', ['$scope', function(
 		};
 		
 		var makeUserAjaxCall = function(){
-			$http.get('https://api.github.com/users/' + ($scope.query || 'octocat'))
+			$http.get('https://api.github.com/users/' + $scope.query)
 					.then(function(response){
 						console.log(response.data);
 						$scope.user = response.data;
@@ -47,11 +50,21 @@ angular.module('angularRecap').controller('mainController', ['$scope', function(
 			makeUserAjaxCall();	
 		};
 		
+		var makeCountdown = function(){
+			console.log("X");
+			$scope.countdown -= 1;
+			if($scope.countdown < 1) {
+				$interval.cancel(interval);
+				makeUserAjaxCall();
+			} 
+		};
+		
+		interval = $interval(makeCountdown, 1000);
 		
 		//makeUserAjaxCall();
 	};
 	
 	angular.module('angularRecap').controller('mainControllerToo', mainControllerToo);
-	mainControllerToo.$inject = ['$scope', '$http'];
+	mainControllerToo.$inject = ['$scope', '$http', '$interval'];
 	
 })();
