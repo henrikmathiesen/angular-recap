@@ -50,7 +50,7 @@
 				<br/>
 			</div>
 			<div class="text-error" ng-show="error">{{ error }}</div>
-			<div ng-include="'./userdetails.html'" ng-show="user"></div>
+			<div id="user-details" ng-include="'./userdetails.html'" ng-show="user"></div>
 		</div>
 		<div>
 			<h2 class="jq-promise-test">jQuery Ajax Promise test</h2>
@@ -59,6 +59,7 @@
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
 		<script src="./js/jspatterns.js"></script>
 		<script src="./js/modules/app.js"></script>
+		<script src="./js/services/gitHubService.js"></script>
 		<script src="./js/controllers/mainController.js"></script>
 	</body>
 

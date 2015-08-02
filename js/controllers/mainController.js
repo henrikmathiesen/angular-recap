@@ -9,7 +9,7 @@ angular.module('angularRecap').controller('mainController', ['$scope', function(
 
 (function(){
 	
-	var mainControllerToo = function($scope, $http, $interval){
+	var mainControllerToo = function($scope, $interval, $log, $location, $anchorScroll, gitHubService){
 		var interval = null;
 		
 		$scope.message = "This is also a min safed controller";
@@ -27,18 +27,22 @@ angular.module('angularRecap').controller('mainController', ['$scope', function(
 		
 		
 		var makeUserRepoAjaxCall = function(){
-			$http.get($scope.user.repos_url)
-				.then(function(response){
-					console.log(response.data);
-					$scope.userRepos = response.data;
+			gitHubService.getUserRepo($scope.user.repos_url)
+				.then(function(repos){
+					$scope.userRepos = repos;
+					$location.hash('user-details');
+					$anchorScroll();
 				});
 		};
 		
 		var makeUserAjaxCall = function(){
-			$http.get('https://api.github.com/users/' + $scope.query)
-					.then(function(response){
-						console.log(response.data);
-						$scope.user = response.data;
+			$interval.cancel(interval);
+			$scope.countdown = 0;
+			$log.info("Searching for user: " + $scope.query);
+			
+			gitHubService.getUser($scope.query)
+					.then(function(user){
+						$scope.user = user;
 						$scope.error = '';
 						makeUserRepoAjaxCall();
 					}, function(response){
@@ -51,10 +55,8 @@ angular.module('angularRecap').controller('mainController', ['$scope', function(
 		};
 		
 		var makeCountdown = function(){
-			console.log("X");
 			$scope.countdown -= 1;
 			if($scope.countdown < 1) {
-				$interval.cancel(interval);
 				makeUserAjaxCall();
 			} 
 		};
@@ -65,6 +67,6 @@ angular.module('angularRecap').controller('mainController', ['$scope', function(
 	};
 	
 	angular.module('angularRecap').controller('mainControllerToo', mainControllerToo);
-	mainControllerToo.$inject = ['$scope', '$http', '$interval'];
+	mainControllerToo.$inject = ['$scope', '$interval', '$log', '$location', '$anchorScroll', 'gitHubService'];
 	
 })();
