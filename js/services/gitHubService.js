@@ -9,8 +9,8 @@
 						});
 		};
 		
-		var getUserRepo = function(repoUrl){
-			return $http.get(repoUrl)
+		var getUserRepo = function(user){
+			return $http.get(user.repos_url)
 						.then(function(response){
 							return response.data;
 						});

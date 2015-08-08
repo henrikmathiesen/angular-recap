@@ -16,6 +16,10 @@ angular.module('angularRecap', ['ngRoute']);
 				templateUrl: 'main.html',
 				controller: 'mainController'
 			})
+			.when('/user/:username', {
+				templateUrl: 'user.html',
+				controller: 'userController'
+			})
 			.otherwise({ redirectTo: '/main' });
 	};
 	

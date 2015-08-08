@@ -11,58 +11,30 @@ angular.module('angularRecap').controller('mainController', ['$scope', function(
 
 (function(){
 	
-	var mainController = function($scope, $interval, $log, $location, $anchorScroll, gitHubService){
+	var mainController = function($scope, $interval, $location){
 		var interval = null;
 		
 		$scope.query = 'octocat';
 		$scope.countdown = 5;
-		$scope.user = null;
-		$scope.userRepos = null;
-		$scope.userReposSortOrder = '-stargazers_count';
-		$scope.error = '';
 		
-		
-		var makeUserRepoAjaxCall = function(){
-			gitHubService.getUserRepo($scope.user.repos_url)
-				.then(function(repos){
-					$scope.userRepos = repos;
-					$location.hash('user-details');
-					$anchorScroll();
-				});
-		};
-		
-		var makeUserAjaxCall = function(){
-			$interval.cancel(interval);
-			$scope.countdown = 0;
-			$log.info("Searching for user: " + $scope.query);
-			
-			gitHubService.getUser($scope.query)
-					.then(function(user){
-						$scope.user = user;
-						$scope.error = '';
-						makeUserRepoAjaxCall();
-					}, function(response){
-						$scope.error = "Error fetching the user"
-					});
-		};
 		
 		$scope.searchUser = function(){
-			makeUserAjaxCall();	
+			$interval.cancel(interval);
+			$location.path('/user/' + $scope.query);
 		};
 		
 		var makeCountdown = function(){
 			$scope.countdown -= 1;
 			if($scope.countdown < 1) {
-				makeUserAjaxCall();
+				$scope.searchUser();
 			} 
 		};
 		
 		interval = $interval(makeCountdown, 1000);
-		
-		//makeUserAjaxCall();
+
 	};
 	
 	angular.module('angularRecap').controller('mainController', mainController);
-	mainController.$inject = ['$scope', '$interval', '$log', '$location', '$anchorScroll', 'gitHubService'];
+	mainController.$inject = ['$scope', '$interval', '$location'];
 	
 })();

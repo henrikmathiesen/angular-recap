@@ -1,32 +1,44 @@
 <div>
-	<div>
-		<div>Name: {{ user.name }}</div>
+	<div class="text-error" ng-show="getUserError">{{ getUserError }}</div>
+	<div ng-show="!getUserError">
 		<div>
-			<img ng-src="{{ user.avatar_url }}" alt="{{ user.name }}" />
+			<div>Name: {{ user.name }}</div>
+			<div>
+				<img ng-src="{{ user.avatar_url }}" alt="{{ user.name }}" />
+			</div>
 		</div>
 	</div>
-	<h4>Repos</h4>
-	<div>Sort</div>
-	<div>
-		<select ng-model="userReposSortOrder">
-			<option value="+name">Name</option>
-			<option value="-stargazers_count">Stars</option>
-		</select>
+	
+	<div class="text-error" ng-show="getReposError">{{ getReposError }}</div>
+	<div ng-show="!getReposError">
+		<h4>Repos</h4>
+		<div>Sort</div>
+		<div>
+			<select ng-model="userReposSortOrder">
+				<option value="+name">Name</option>
+				<option value="-stargazers_count">Stars</option>
+			</select>
+		</div>
+		<table>
+			<thead>
+				<tr>
+					<th>Name</th>
+					<th>Primary Language</th>
+					<th>Stars</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="repo in userRepos | orderBy:userReposSortOrder">
+					<td>{{ repo.name }}</td>
+					<td>{{ repo.language }}</td>
+					<td>{{ repo.stargazers_count | number }}</td>
+				</tr>
+			</tbody>
+		</table>
 	</div>
-	<table>
-		<thead>
-			<tr>
-				<th>Name</th>
-				<th>Primary Language</th>
-				<th>Stars</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr ng-repeat="repo in userRepos | orderBy:userReposSortOrder">
-				<td>{{ repo.name }}</td>
-				<td>{{ repo.language }}</td>
-				<td>{{ repo.stargazers_count | number }}</td>
-			</tr>
-		</tbody>
-	</table>
+	
+	<br/><br/>
+	<div>
+		<a href="#/main">Back to Search</a>
+	</div>
 </div>
