@@ -49,7 +49,7 @@ worker.job02();
 worker.job01();
 
 
-//  ^ All these global variables is not ok
+//  ^ All these global variables are not ok
 
 
 

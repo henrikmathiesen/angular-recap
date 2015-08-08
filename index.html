@@ -50,11 +50,12 @@
 				<br/>
 			</div>
 			<div class="text-error" ng-show="error">{{ error }}</div>
-			<div id="user-details" ng-include="'./userdetails.html'" ng-show="user"></div>
+			<div id="user-details" ng-include="'./user.html'" ng-show="user"></div>
 		</div>
 		<div>
 			<h2 class="jq-promise-test">jQuery Ajax Promise test</h2>
 		</div>
+		<div ng-include="'./ngIncludeforFun.html'"></div>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.min.js"></script>
