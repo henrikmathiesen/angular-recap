@@ -1,0 +1,21 @@
+<div>
+	<div class="text-error" ng-show="error">{{ error }}</div>
+	<div ng-show="!error">
+		<h2>{{ repo.name }}</h2>
+		<h3>Issues: {{ repo.open_issues_count }}</h3>
+		<h3>Collaborators</h3>
+		<ul>
+			<li ng-repeat="user in repo.collaborators">
+				<span>{{ user.login }}</span>
+				<img ng-src="{{ user.avatar_url }}" alt="{{ user.name }}" />
+			</li>
+		</ul>
+		<br/><br/>
+		<div>
+			<a href="#/main">Back to Search</a>
+		</div>
+		<div>
+			<a href="#/user/{{ repo.owner.login }}">Back to {{ repo.owner.login }}</a>
+		</div>
+	</div>
+</div>

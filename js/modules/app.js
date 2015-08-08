@@ -20,6 +20,14 @@ angular.module('angularRecap', ['ngRoute']);
 				templateUrl: 'user.html',
 				controller: 'userController'
 			})
+			.when('/repo/:username/:reponame', {
+				templateUrl: 'repo.html',
+				controller: 'repoController'
+			})
+			.when('/anchorscroll', {
+				templateUrl: 'anchorscroll.html',
+				controller: 'anchorscrollController'
+			})
 			.otherwise({ redirectTo: '/main' });
 	};
 	

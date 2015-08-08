@@ -9,3 +9,7 @@
 .text-warning {
   color:#FF6600;
 }
+
+.cursor-pointer {
+  cursor: pointer;
+}
