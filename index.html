@@ -8,54 +8,16 @@
 		<meta name="description" content="Angular Recap">
 		<link rel="stylesheet" href="./css/base.css">
 	</head>
+	
 	<body ng-app="angularRecap" ng-cloak="">
 		<h1>Angular Recap</h1>
-		<h2>A simple test that Angular is working</h2>
-		<div>{{ 1 + 1 }}</div>
-		<h3>Model binding, name is created on the scope behind the scenes</h3>
-		<div>
-			<input type="text" ng-model="name" />{{ name }}</div>
-		<br />
-		<div ng-controller="mainController">{{ message }}</div>
-		<div ng-controller="mainControllerToo">
-			<h3>Hard coded model data</h3>
-			<div>{{ message }}</div>
-			<br />
-			<br />
-			<div>
-				<div>First name: {{ person.firstName }}</div>
-				<div>Last name: {{ person.lastName }}</div>
-				<div>
-					<img ng-src="{{ person.image }}" alt="{{ person.firstName + ' ' + person.lastName }}" />
-				</div>
-			</div>
-			<br />
-			<br />
-			<h3>Data from Ajax Call</h3>
-			<form name="searchUserForm" ng-submit="searchUser()">
-				<div ng-show="countdown > 0" ng-class="{'text-warning': countdown < 3}">{{ countdown }}</div>
-				<div>
-					<input type="search" ng-required="true" placeholder="Username to find" ng-model="query">
-				</div>
-				<div>
-					<br/>
-				</div>
-				<div>
-					<input type="submit" value="Search">
-				</div>
-			</form>
-			<div>
-				<br/>
-				<br/>
-				<br/>
-			</div>
-			<div class="text-error" ng-show="error">{{ error }}</div>
-			<div id="user-details" ng-include="'./user.html'" ng-show="user"></div>
-		</div>
-		<div>
-			<h2 class="jq-promise-test">jQuery Ajax Promise test</h2>
-		</div>
+		<h2>The Git Hub Viewer -- and more</h2>
 		<div ng-include="'./ngIncludeforFun.html'"></div>
+		<br /><br />
+		<div ng-view></div>
+		
+		
+		
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
 		<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.min.js"></script>
@@ -64,5 +26,6 @@
 		<script src="./js/services/gitHubService.js"></script>
 		<script src="./js/controllers/mainController.js"></script>
 	</body>
+
 
 </html>

@@ -1,0 +1,14 @@
+<div>
+	<form name="searchUserForm" ng-submit="searchUser()">
+		<div ng-show="countdown > 0" ng-class="{'text-warning': countdown < 3}">{{ countdown }}</div>
+		<div>
+			<input type="search" ng-required="true" placeholder="Username to find" ng-model="query">
+		</div>
+		<div>
+			You are searching for {{ query }}
+		</div>
+		<div>
+			<input type="submit" value="Search">
+		</div>
+	</form>
+</div>
