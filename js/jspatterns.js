@@ -1,6 +1,6 @@
 /// <reference path="../typings/jquery/jquery.d.ts"/>
 
-// Basic JavaScript Patterns
+// Basic JavaScript Patterns!
 
 
 
