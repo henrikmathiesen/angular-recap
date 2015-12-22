@@ -28,7 +28,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr ng-repeat="repo in userRepos | orderBy:userReposSortOrder">
+				<tr ng-repeat="repo in userRepos | orderBy:userReposSortOrder"><!-- :reverse (bool on scope, can use instead of - sign) -->
 					<td><a href="#/repo/{{ user.login }}/{{ repo.name }}">{{ repo.name }}</a></td>
 					<td>{{ repo.language }}</td>
 					<td>{{ repo.stargazers_count | number }}</td>
