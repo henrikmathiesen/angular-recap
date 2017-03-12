@@ -1,0 +1,24 @@
+{
+  "name": "angular-recap",
+  "version": "1.0.0",
+  "description": "Recap of the ever so nice framework Angular. Based on this great course: https://app.pluralsight.com/library/courses/angularjs-get-started/table-of-contents",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "tsd install",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/henrikmathiesen/angular-recap.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/henrikmathiesen/angular-recap/issues"
+  },
+  "homepage": "https://github.com/henrikmathiesen/angular-recap#readme",
+  "devDependencies": {
+    "tsd": "^0.6.5"
+  }
+}
