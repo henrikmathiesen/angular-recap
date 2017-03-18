@@ -19,6 +19,6 @@
   },
   "homepage": "https://github.com/henrikmathiesen/angular-recap#readme",
   "devDependencies": {
-    "tsd": "^0.6.5"
+    "tsd": "0.6.5"
   }
 }
